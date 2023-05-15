@@ -1,0 +1,19 @@
+{
+  "name": "autoextraction",
+  "version": "1.0.0",
+  "description": "Used when you want to extract content that meets specific conditions in a project.",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kangjm103/autoExtraction.git"
+  },
+  "author": "jmkang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kangjm103/autoExtraction/issues"
+  },
+  "homepage": "https://github.com/kangjm103/autoExtraction#readme"
+}
