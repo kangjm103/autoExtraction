@@ -51,13 +51,19 @@ const main = async () => {
       if (stats.isFile()
         && path.extname(filePath) === '.js') {
         const data = await fs.promises.readFile(filePath, 'utf8');
-        // "common.Util.TR('" 로 시작해서 "')" 혹은 "'," 로 끝나는 문자열에서 내용 빼오기
-        const regex = new RegExp(`${prefix}(.*?)(${suffix1}|${suffix2})`,'g');
+        const regex = new RegExp(`${prefix}(.*?)(${suffix1}|${suffix2})`,'g'); // "common.Util.TR('" 로 시작해서 "')" 혹은 "'," 로 끝나는 내용
+        // const regex = new RegExp('common\\.Util\\.TR\\(([^\'].+?)\\)', 'g'); // "common.Util.TR(" 로 시작하면서 바로 뒤에 "'" 가 오지 않고 ")" 로 끝나는 내용
         let match;
 
         while ((match = regex.exec(data)) !== null) {
           const value = match[1];
           const capitalValue = value.toUpperCase();
+
+          // // value 값만 뽑기
+          // if (!outputMap[value]) {
+          //   stream.write(`${value}\n`);
+          //   outputMap[value] = true;
+          // }
 
           if (value.indexOf('\'') > -1) {
             // 위에서 "\'" 가 들어간 문자열은 번역 리스트 객체에 포함되지 못했기때문에 Pass.
